@@ -36,8 +36,8 @@ const showingNavigationDropdown = ref(false);
                                     Админка
                                 </NavLink>
                                 <NavLink
-                                    :href="route('blog')"
-                                    :active="route().current('blog')"
+                                    :href="route('admin_user_index')"
+                                    :active="route().current('admin_user_index')"
                                 >
                                     Пользователи
                                 </NavLink>
@@ -48,8 +48,8 @@ const showingNavigationDropdown = ref(false);
                                     Посты
                                 </NavLink>
                                 <NavLink
-                                    :href="route('categories')"
-                                    :active="route().current('categories')"
+                                    :href="route('admin_category_index')"
+                                    :active="route().current('admin_category_index')"
                                 >
                                     Категории
                                 </NavLink>
@@ -124,8 +124,8 @@ const showingNavigationDropdown = ref(false);
                             Админка
                         </ResponsiveNavLink>
                         <ResponsiveNavLink
-                            :href="route('blog')"
-                            :active="route().current('blog')"
+                            :href="route('admin_user_index')"
+                            :active="route().current('admin_user_index')"
                         >
                             Пользователи
                         </ResponsiveNavLink>
@@ -136,8 +136,8 @@ const showingNavigationDropdown = ref(false);
                             Посты
                         </ResponsiveNavLink>
                         <ResponsiveNavLink
-                            :href="route('categories')"
-                            :active="route().current('categories')"
+                            :href="route('admin_category_index')"
+                            :active="route().current('admin_category_index')"
                         >
                             Категории
                         </ResponsiveNavLink>
