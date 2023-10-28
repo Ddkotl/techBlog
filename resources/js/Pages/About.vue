@@ -10,7 +10,7 @@ import { Head } from "@inertiajs/vue3";
 
     <MainLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Главная</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">О нас</h2>
         </template>
 
         <div class="py-12">

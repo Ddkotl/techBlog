@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Main\AboutController;
+use App\Http\Controllers\Main\BlogController;
+use App\Http\Controllers\Main\CategoriesController;
+use App\Http\Controllers\Main\ReitingController;
+use App\Http\Controllers\Main\WelcomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -16,14 +21,14 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+Route::group(['namespace'=>'Main'],function(){
+    Route::get('/',[WelcomeController::class,'index'])->name('welcome');
+    Route::get('/about',[AboutController::class,'index'])->name('about');
+    Route::get('/blog',[BlogController::class,'index'])->name('blog');
+    Route::get('/categories',[CategoriesController::class,'index'])->name('categories');
+    Route::get('/reiting',[ReitingController::class,'index'])->name('reiting');
 });
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -36,3 +41,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';
