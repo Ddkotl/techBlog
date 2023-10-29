@@ -20,12 +20,12 @@ const form = useForm({
 </script>
 
 <template>
-    <Head title="Главная" />
+    <Head title="Редактирование категории" />
 
     <AdminLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Категории
+              Редактирование категории
             </h2>
         </template>
 

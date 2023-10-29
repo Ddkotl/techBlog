@@ -13,12 +13,12 @@ const form = useForm({
 </script>
 
 <template>
-    <Head title="Создание категории" />
+    <Head title="Создание тэга" />
 
     <AdminLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Создание категории
+                Тэги
             </h2>
         </template>
 
@@ -33,13 +33,13 @@ const form = useForm({
                                     <h2
                                         class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl"
                                     >
-                                        Создание категории
+                                        Создание тэга
                                     </h2>
 
                                     <p
                                         class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"
                                     >
-                                        Вы можете создать новую категорию
+                                        Вы можете создать новый тэг
                                         заполнив форму ниже
                                     </p>
                                 </div>
@@ -49,7 +49,7 @@ const form = useForm({
                                 <form
                                     @submit.prevent="
                                         form.post(
-                                            route('admin_category_store'),
+                                            route('admin_tag_store'),
                                             {
                                                 onSuccess: () => form.reset(),
                                             }
@@ -81,7 +81,7 @@ const form = useForm({
                                     >
                                         <Link
                                             :href="
-                                                route('admin_category_index')
+                                                route('admin_tag_index')
                                             "
                                         >
                                             <BaseButton

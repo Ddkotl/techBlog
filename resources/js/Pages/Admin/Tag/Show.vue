@@ -16,7 +16,7 @@ dayjs.locale("ru");
 dayjs.extend(relativeTime);
 
 defineProps({
-    category: {
+    tag: {
         type: Object,
         required: true,
     },
@@ -26,12 +26,12 @@ const form = useForm({
 </script>
 
 <template>
-    <Head title="Категория " />
+    <Head title="Тэг " />
 
     <AdminLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Категории
+                Тэг
             </h2>
         </template>
 
@@ -47,9 +47,9 @@ const form = useForm({
                                 <div class="flex justify-between mb-4 rounded-t sm:mb-5">
                                     <div class="text-lg text-gray-900 md:text-xl">
                                         <h3 class="font-semibold">
-                                            Название категории :
+                                            Название тэга :
                                         </h3>
-                                        <p class="font-bold">{{ category.title }}</p>
+                                        <p class="font-bold">{{ tag.title }}</p>
                                     </div>
 
                                 </div>
@@ -68,17 +68,17 @@ const form = useForm({
                                         Количество постов: ?
                                     </dt>
                                     <dt class="mb-2 font-semibold leading-none text-gray-900 ">
-                                        Создано: {{ dayjs(category.created_at).fromNow() }}
+                                        Создано: {{ dayjs(tag.created_at).fromNow() }}
                                     </dt>
                                     <dt class="mb-2 font-semibold leading-none text-gray-900 ">
-                                        Изменено: {{ dayjs(category.updated_at).fromNow() }}
+                                        Изменено: {{ dayjs(tag.updated_at).fromNow() }}
                                     </dt>
 
                                 </dl>
                                 <div class="flex gap-2 sm:flex-row flex-col justify-between items-center">
                                     <div>
                                         <Link :href="route(
-                                            'admin_category_index'
+                                            'admin_tag_index'
                                         )
                                             ">
                                         <BaseButton :name="BUTTON_TYPE_PRIMARY">
@@ -91,7 +91,7 @@ const form = useForm({
                                     </div>
                                     <div class="flex flex-col sm:flex-row gap-2">
                                         <Link :href="route(
-                                            'admin_category_edit', category.id
+                                            'admin_tag_edit', tag.id
                                         )
                                             ">
                                         <BaseButton :name="BUTTON_TYPE_WARNING">
@@ -104,8 +104,8 @@ const form = useForm({
                                         <form @submit.prevent="
                                             form.delete(
                                                 route(
-                                                    'admin_category_delete',
-                                                    category.id
+                                                    'admin_tag_delete',
+                                                    tag.id
                                                 ),
                                                 {
                                                     onSuccess: () =>

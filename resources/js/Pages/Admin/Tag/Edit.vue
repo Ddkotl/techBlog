@@ -7,18 +7,25 @@ import BaseIcon from "@/Components/BaseIcon.vue";
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
 
+const props = defineProps({
+    tag:{
+        required:true,
+        type:Object
+    }
+})
+
 const form = useForm({
-    title: "",
+    title: props.tag.title,
 });
 </script>
 
 <template>
-    <Head title="Создание категории" />
+    <Head title="Изменение тэга" />
 
     <AdminLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Создание категории
+                Тэгиы
             </h2>
         </template>
 
@@ -33,13 +40,13 @@ const form = useForm({
                                     <h2
                                         class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl"
                                     >
-                                        Создание категории
+                                        Редактирование тэга
                                     </h2>
 
                                     <p
                                         class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"
                                     >
-                                        Вы можете создать новую категорию
+                                        Вы можете изменить тэг
                                         заполнив форму ниже
                                     </p>
                                 </div>
@@ -48,8 +55,8 @@ const form = useForm({
                                 <!-- form - start -->
                                 <form
                                     @submit.prevent="
-                                        form.post(
-                                            route('admin_category_store'),
+                                        form.patch(
+                                            route('admin_tag_update',tag.id),
                                             {
                                                 onSuccess: () => form.reset(),
                                             }
@@ -81,7 +88,7 @@ const form = useForm({
                                     >
                                         <Link
                                             :href="
-                                                route('admin_category_index')
+                                                route('admin_tag_index')
                                             "
                                         >
                                             <BaseButton
@@ -101,7 +108,7 @@ const form = useForm({
                                             :name="BUTTON_TYPE_SUCCESS"
                                         >
                                             <div class="flex gap-2">
-                                                <p>Добавить</p>
+                                                <p>Изменить</p>
                                                 <BaseIcon :name="ICON_PLUS" />
                                             </div>
                                         </BaseButton>

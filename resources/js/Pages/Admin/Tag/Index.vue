@@ -17,7 +17,7 @@ dayjs.locale("ru");
 dayjs.extend(relativeTime);
 
 defineProps({
-  categories: {
+  tags: {
     type: Object,
     required: true,
   },
@@ -27,12 +27,12 @@ const form = useForm({
 </script>
 
 <template>
-  <Head title="Категории" />
+  <Head title="Тэги" />
 
   <AdminLayout>
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Категории
+        Тэги
       </h2>
     </template>
 
@@ -40,10 +40,10 @@ const form = useForm({
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="justify-center flex p-6 mx text-gray-900">
-            <Link :href="route('admin_category_create')">
+            <Link :href="route('admin_tag_create')">
             <BaseButton>
               <div class="flex gap-2">
-                <p>Добавить категорию</p>
+                <p>Добавить тэг</p>
                 <BaseIcon :name="ICON_PLUS" />
               </div>
             </BaseButton>
@@ -55,7 +55,7 @@ const form = useForm({
                 <thead class="text-xs text-gray-700 uppercase bg-gray-200">
                   <tr>
                     <th scope="col" class="px-2 py-3">
-                      Категория
+                      Тэг
                     </th>
                     <th scope="col" class="px-2 py-3">
                       Постов
@@ -78,29 +78,29 @@ const form = useForm({
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="category in categories.data" :key="category.id" class="bg-white border-b">
+                  <tr v-for="tag in tags.data" :key="tag.id" class="bg-white border-b">
                     <th scope="row" class="px-2 py-1 font-medium text-gray-900 whitespace-nowrap">
-                      {{ category.title }}
+                      {{ tag.title }}
                     </th>
                     <td class="px-2 py-1">Silver</td>
                     <td class="px-2 py-1">
                       {{
                         dayjs(
-                          category.created_at
+                          tag.created_at
                         ).fromNow()
                       }}
                     </td>
                     <td class="px-2 py-1">
                       {{
                         dayjs(
-                          category.updated_at
+                          tag.updated_at
                         ).fromNow()
                       }}
                     </td>
                     <td class="px-2 py-1">
                       <Link :href="route(
-                            'admin_category_show',
-                            category.id
+                            'admin_tag_show',
+                            tag.id
                           )
                           ">
                       <BaseButton :name="BUTTON_TYPE_PRIMARY">
@@ -112,8 +112,8 @@ const form = useForm({
                     </td>
                     <td class="px-2 py-1">
                       <Link :href="route(
-                        'admin_category_edit',
-                        category.id
+                        'admin_tag_edit',
+                        tag.id
                       )
                         ">
                       <BaseButton :name="BUTTON_TYPE_WARNING">
@@ -128,8 +128,8 @@ const form = useForm({
                       <form @submit.prevent="
                         form.delete(
                           route(
-                            'admin_category_delete',
-                            category.id
+                            'admin_tag_delete',
+                            tag.id
                           ),
                           {
                             onSuccess: () =>
@@ -148,7 +148,7 @@ const form = useForm({
                 </tbody>
               </table>
             </div>
-            <Pagination :data="categories" />
+            <Pagination :data="tags" />
           </div>
         </div>
       </div>

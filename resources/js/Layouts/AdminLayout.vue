@@ -54,8 +54,8 @@ const showingNavigationDropdown = ref(false);
                                     Категории
                                 </NavLink>
                                 <NavLink
-                                    :href="route('about')"
-                                    :active="route().current('about')"
+                                    :href="route('admin_tag_index')"
+                                    :active="route().current('admin_tag_index')"
                                 >
                                     Тэги
                                 </NavLink>
@@ -142,8 +142,8 @@ const showingNavigationDropdown = ref(false);
                             Категории
                         </ResponsiveNavLink>
                         <ResponsiveNavLink
-                            :href="route('about')"
-                            :active="route().current('about')"
+                            :href="route('admin_tag_index')"
+                            :active="route().current('admin_tag_index')"
                         >
                             Тэги
                         </ResponsiveNavLink>
