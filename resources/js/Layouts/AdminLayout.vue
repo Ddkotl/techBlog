@@ -42,8 +42,8 @@ const showingNavigationDropdown = ref(false);
                                     Пользователи
                                 </NavLink>
                                 <NavLink
-                                    :href="route('reiting')"
-                                    :active="route().current('reiting')"
+                                    :href="route('admin_post_index')"
+                                    :active="route().current('admin_post_index')"
                                 >
                                     Посты
                                 </NavLink>
@@ -130,8 +130,8 @@ const showingNavigationDropdown = ref(false);
                             Пользователи
                         </ResponsiveNavLink>
                         <ResponsiveNavLink
-                            :href="route('reiting')"
-                            :active="route().current('reiting')"
+                            :href="route('admin_post_index')"
+                            :active="route().current('admin_post_index')"
                         >
                             Посты
                         </ResponsiveNavLink>

@@ -17,7 +17,7 @@ dayjs.locale("ru");
 dayjs.extend(relativeTime);
 
 defineProps({
-  users: {
+  posts: {
     type: Object,
     required: true,
   },
@@ -27,12 +27,12 @@ const form = useForm({
 </script>
 
 <template>
-  <Head title="Категории" />
+  <Head title="Посты" />
 
   <AdminLayout>
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Пользователи
+        Посты
       </h2>
     </template>
 
@@ -40,10 +40,10 @@ const form = useForm({
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="justify-center flex p-6 mx text-gray-900">
-            <Link :href="route('admin_user_create')">
+            <Link :href="route('admin_post_create')">
             <BaseButton>
               <div class="flex gap-2">
-                <p>Добавить пользователя</p>
+                <p>Добавить пост</p>
                 <BaseIcon :name="ICON_PLUS" />
               </div>
             </BaseButton>
@@ -55,10 +55,10 @@ const form = useForm({
                 <thead class="text-xs text-gray-700 uppercase bg-gray-200">
                   <tr>
                     <th scope="col" class="px-2 py-3">
-                      Имя
+                      Название
                     </th>
                     <th scope="col" class="px-2 py-3">
-                      email
+                      Категория
                     </th>
                     <th scope="col" class="px-2 py-3">
                       Создано
@@ -78,29 +78,29 @@ const form = useForm({
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="user in users.data" :key="user.id" class="bg-white border-b">
+                  <tr v-for="post in posts.data" :key="post.id" class="bg-white border-b">
                     <th scope="row" class="px-2 py-1 font-medium text-gray-900 whitespace-nowrap">
-                      {{ user.name }}
+                      {{ post.title }}
                     </th>
-                    <td class="px-2 py-1">{{ user.email }}</td>
+                    <td class="px-2 py-1">Silver</td>
                     <td class="px-2 py-1">
                       {{
                         dayjs(
-                          user.created_at
+                          post.created_at
                         ).fromNow()
                       }}
                     </td>
                     <td class="px-2 py-1">
                       {{
                         dayjs(
-                          user.updated_at
+                          post.updated_at
                         ).fromNow()
                       }}
                     </td>
                     <td class="px-2 py-1">
                       <Link :href="route(
-                            'admin_user_show',
-                            user.id
+                            'admin_post_show',
+                            post.id
                           )
                           ">
                       <BaseButton :name="BUTTON_TYPE_PRIMARY">
@@ -112,8 +112,8 @@ const form = useForm({
                     </td>
                     <td class="px-2 py-1">
                       <Link :href="route(
-                        'admin_user_edit',
-                        user.id
+                        'admin_post_edit',
+                        post.id
                       )
                         ">
                       <BaseButton :name="BUTTON_TYPE_WARNING">
@@ -128,8 +128,8 @@ const form = useForm({
                       <form @submit.prevent="
                         form.delete(
                           route(
-                            'admin_user_delete',
-                            user.id
+                            'admin_post_delete',
+                            post.id
                           ),
                           {
                             onSuccess: () =>
@@ -148,7 +148,7 @@ const form = useForm({
                 </tbody>
               </table>
             </div>
-            <Pagination :data="users" />
+            <Pagination :data="posts" />
           </div>
         </div>
       </div>

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\User;
+namespace App\Http\Controllers\Admin\Post;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Post;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -14,8 +14,8 @@ class IndexController extends Controller
      */
     public function index( ): Response
     {
-        return Inertia::render('Admin/User/Index',[
-            'users' =>User::latest()->paginate(5)
+        return Inertia::render('Admin/Post/Index',[
+            'posts' =>Post::latest()->paginate(5)
         ]);
     }
 

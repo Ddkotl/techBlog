@@ -11,9 +11,13 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 
   Route::group(['prefix' => 'user'], function () {
     Route::get('/', [User\IndexController::class, 'index'])->name('admin_user_index');
+    Route::get('/create', [User\CreateController::class, 'create'])->name('admin_user_create');
+    Route::post('/', [User\StoreController::class, 'store'])->name('admin_user_store');
+    Route::get('/{user}', [User\ShowController::class, 'show'])->name('admin_user_show');
+    Route::get('/{user}/edit', [User\EditController::class, 'edit'])->name('admin_user_edit');
+    Route::patch('/{user}', [User\UpdateController::class, 'update'])->name('admin_user_update');
+    Route::delete('/{user}', [User\DeleteController::class, 'delete'])->name('admin_user_delete');
   });
-
-
   Route::group(['prefix' => 'category'], function () {
     Route::get('/', [Category\IndexController::class, 'index'])->name('admin_category_index');
     Route::get('/create', [Category\CreateController::class, 'create'])->name('admin_category_create');
@@ -32,4 +36,14 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::patch('/{tag}', [Tag\UpdateController::class, 'update'])->name('admin_tag_update');
     Route::delete('/{tag}', [Tag\DeleteController::class, 'delete'])->name('admin_tag_delete');
   });
+  Route::group(['prefix' => 'post'], function () {
+    Route::get('/', [Post\IndexController::class, 'index'])->name('admin_post_index');
+    Route::get('/create', [Post\CreateController::class, 'create'])->name('admin_post_create');
+    Route::post('/', [Post\StoreController::class, 'store'])->name('admin_post_store');
+    Route::get('/{post}', [Post\ShowController::class, 'show'])->name('admin_post_show');
+    Route::get('/{post}/edit', [Post\EditController::class, 'edit'])->name('admin_post_edit');
+    Route::patch('/{post}', [Post\UpdateController::class, 'update'])->name('admin_post_update');
+    Route::delete('/{post}', [Post\DeleteController::class, 'delete'])->name('admin_post_delete');
+  });
+
 });

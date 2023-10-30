@@ -7,18 +7,16 @@ use App\Models\User;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class IndexController extends Controller
+class EditController extends Controller
 {
     /**
      * Display the user's profile form.
      */
-    public function index( ): Response
+    public function edit(User $user ): Response
     {
-        return Inertia::render('Admin/User/Index',[
-            'users' =>User::latest()->paginate(5)
+        return Inertia::render('Admin/User/Edit',[
+            'user' => $user
         ]);
     }
-
-    
 
 }

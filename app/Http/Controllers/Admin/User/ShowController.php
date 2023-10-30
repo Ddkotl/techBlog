@@ -7,15 +7,15 @@ use App\Models\User;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class IndexController extends Controller
+class ShowController extends Controller
 {
     /**
      * Display the user's profile form.
      */
-    public function index( ): Response
+    public function show(User $user ): Response
     {
-        return Inertia::render('Admin/User/Index',[
-            'users' =>User::latest()->paginate(5)
+        return Inertia::render('Admin/User/Show',[
+            'user' =>$user
         ]);
     }
 
