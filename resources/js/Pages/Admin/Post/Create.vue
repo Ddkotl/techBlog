@@ -2,11 +2,13 @@
 import { BUTTON_TYPE_WARNING, BUTTON_TYPE_SUCCESS } from "@/constants";
 import { ICON_PLUS, ICON_XMARK } from "@/icons";
 import BaseButton from "@/Components/BaseButton.vue";
-import TextInput from "@/Components/TextInput.vue";
 import InputError from "@/Components/InputError.vue";
 import BaseIcon from "@/Components/BaseIcon.vue";
+import Dropzone from "@/Components/Dropzone.vue";
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
+// import TinyEditor from "@/Components/TinyEditor.vue";
+import Editor from '@tinymce/tinymce-vue'
 
 const form = useForm({
   title: "",
@@ -61,10 +63,37 @@ const form = useForm({
                   </div>
                   <div class="sm:col-span-2">
                     <label for="content" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Контент</label>
-                    <TextInput v-model="form.content" type="text" name="content"
-                      class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
-                      placeholder="Введите название категории" />
-                    <InputError :message="form.errors.content" class="mt-2" />
+                    <div class="col-span-full">
+                      <div class="mt-2">
+                        <main id="sample">
+                          <Editor v-model="form.content" id="content" name="content" placeholder="Редактируйте пост"
+                            api-key="yf3mku75qoybk2xrqpz4mysjpprd4lfnmgmrlks722lskr8n" :init="{
+                              toolbar_mode: 'sliding',
+                              plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+                              toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                            }" initial-value="" />
+                        </main>
+                        <InputError :message="form.errors.content" class="mt-2" />
+                      </div>
+                    </div>
+                    <div class="col-span-full">
+                      <div class="mt-2">
+                        <Dropzone />
+                      </div>
+                    </div>
+
+                    <div class="sm:col-span-3">
+                      <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Категория</label>
+                      <div class="mt-2">
+                        <select id="country" name="country" autocomplete="country-name"
+                          class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                          <option>United States</option>
+                          <option>Canada</option>
+                          <option>Mexico</option>
+                        </select>
+                      </div>
+                    </div>
+
                   </div>
 
                   <div class="flex gap-2 items-center justify-between sm:col-span-2">
@@ -95,3 +124,13 @@ const form = useForm({
     </div>
   </AdminLayout>
 </template>
+<style scoped>
+@media (min-width: 1024px) {
+  #sample {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    width: 100%;
+  }
+}
+</style>
