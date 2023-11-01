@@ -22,8 +22,6 @@ export default {
             url: 'fdg',
             method: 'post',
             autoProcessQueue:false,
-            uploadMultiple: false,
-            maxFilesize: 2000,
         });
     },
 }

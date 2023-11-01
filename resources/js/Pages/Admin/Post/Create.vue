@@ -78,7 +78,7 @@ const form = useForm({
                     </div>
                     <div class="col-span-full">
                       <div class="mt-2">
-                        <Dropzone v-model="form.content"/>
+                        <Dropzone v-model="form.url"/>
                       </div>
                     </div>
 
