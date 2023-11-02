@@ -16,7 +16,7 @@ dayjs.locale("ru");
 dayjs.extend(relativeTime);
 
 defineProps({
-    category: {
+    user: {
         type: Object,
         required: true,
     },
@@ -26,12 +26,12 @@ const form = useForm({
 </script>
 
 <template>
-    <Head title="Категория " />
+    <Head title="Пользователь " />
 
     <AdminLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Категории
+                Пользователь
             </h2>
         </template>
 
@@ -47,38 +47,38 @@ const form = useForm({
                                 <div class="flex justify-between mb-4 rounded-t sm:mb-5">
                                     <div class="text-lg text-gray-900 md:text-xl">
                                         <h3 class="font-semibold">
-                                            Название категории :
+                                          Пользователь :
                                         </h3>
-                                        <p class="font-bold">{{ category.title }}</p>
+                                        <p class="font-bold">{{ user.name }}</p>
+                                    </div>
+                                    <div class="text-lg text-gray-900 md:text-xl">
+                                        <h3 class="font-semibold">
+                                          email :
+                                        </h3>
+                                        <p class="font-bold">{{ user.email }}</p>
                                     </div>
 
                                 </div>
                                 <dl>
+                                    
                                     <dt class="mb-2 font-semibold leading-none text-gray-900 ">
-                                        Описание
-                                    </dt>
-                                    <dd class="mb-4 font-light text-gray-500 sm:mb-5">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam amet et odit
-                                        consequuntur voluptate repellat quasi dolores repellendus. Voluptate pariatur
-                                        nostrum dignissimos earum debitis asperiores, praesentium enim? Iste corrupti non
-                                        modi magni cum voluptatibus quos quo at reprehenderit! Nam sed fugiat quisquam
-                                        consequatur maxime debitis sunt ipsum perferendis quidem culpa?
-                                    </dd>
-                                    <dt class="mb-2 font-semibold leading-none text-gray-900 ">
-                                        Количество постов: ?
+                                        Количество лайков: ?
                                     </dt>
                                     <dt class="mb-2 font-semibold leading-none text-gray-900 ">
-                                        Создано: {{ dayjs(category.created_at).fromNow() }}
+                                        Количество коментариев: ?
                                     </dt>
                                     <dt class="mb-2 font-semibold leading-none text-gray-900 ">
-                                        Изменено: {{ dayjs(category.updated_at).fromNow() }}
+                                        Создано: {{ dayjs(user.created_at).fromNow() }}
+                                    </dt>
+                                    <dt class="mb-2 font-semibold leading-none text-gray-900 ">
+                                        Изменено: {{ dayjs(user.updated_at).fromNow() }}
                                     </dt>
 
                                 </dl>
                                 <div class="flex gap-2 sm:flex-row flex-col justify-between items-center">
                                     <div>
                                         <Link :href="route(
-                                            'admin_category_index'
+                                            'admin_user_index'
                                         )
                                             ">
                                         <BaseButton :name="BUTTON_TYPE_PRIMARY">
@@ -91,7 +91,7 @@ const form = useForm({
                                     </div>
                                     <div class="flex flex-col sm:flex-row gap-2">
                                         <Link :href="route(
-                                            'admin_category_edit', category.id
+                                            'admin_user_edit', user.id
                                         )
                                             ">
                                         <BaseButton :name="BUTTON_TYPE_WARNING">
@@ -104,13 +104,9 @@ const form = useForm({
                                         <form @submit.prevent="
                                             form.delete(
                                                 route(
-                                                    'admin_category_delete',
-                                                    category.id
-                                                ),
-                                                {
-                                                    onSuccess: () =>
-                                                        form.reset(),
-                                                }
+                                                    'admin_user_delete',
+                                                    user.id
+                                                )
                                             )
                                             ">
                                             <BaseButton :name="BUTTON_TYPE_DANGER">

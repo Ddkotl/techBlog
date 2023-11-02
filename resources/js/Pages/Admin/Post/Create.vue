@@ -10,6 +10,17 @@ import { Head, Link, useForm } from "@inertiajs/vue3";
 // import TinyEditor from "@/Components/TinyEditor.vue";
 import Editor from '@tinymce/tinymce-vue'
 
+defineProps({
+  categories:{
+    required:true,
+    type:Object
+  },
+  tags:{
+    required:true,
+    type:Object
+  }
+})
+
 const form = useForm({
   title: "",
   content: "",
@@ -65,6 +76,7 @@ const form = useForm({
                     <label for="content" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Контент</label>
                     <div class="col-span-full">
                       <div class="mt-2">
+
                         <main id="sample">
                           <Editor v-model="form.content" id="content" name="content" placeholder="Редактируйте пост"
                             api-key="yf3mku75qoybk2xrqpz4mysjpprd4lfnmgmrlks722lskr8n" :init="{
@@ -78,7 +90,7 @@ const form = useForm({
                     </div>
                     <div class="col-span-full">
                       <div class="mt-2">
-                        <Dropzone v-model="form.url"/>
+                        <Dropzone />
                       </div>
                     </div>
 

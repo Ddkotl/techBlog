@@ -1,10 +1,18 @@
 <script setup>
   import Editor from '@tinymce/tinymce-vue'
+
+  defineProps({
+    content:{
+      required:true,
+      type:String
+    }
+  })
 </script>
 
 <template>
   <main id="sample">
     <Editor
+    v-model="content"
       placeholder="Редактируйте пост"
       api-key="yf3mku75qoybk2xrqpz4mysjpprd4lfnmgmrlks722lskr8n"
       :init="{

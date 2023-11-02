@@ -130,11 +130,7 @@ const form = useForm({
                           route(
                             'admin_user_delete',
                             user.id
-                          ),
-                          {
-                            onSuccess: () =>
-                              form.reset(),
-                          }
+                          )
                         )
                         ">
                         <BaseButton :name="BUTTON_TYPE_DANGER">
