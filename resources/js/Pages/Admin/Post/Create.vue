@@ -1,23 +1,45 @@
+<script>
+import Dropzone from 'dropzone'
+export default {
+  data() {
+    return {
+      dropzone: null
+    };
+  },
+  mounted() {
+    this.dropzone = new Dropzone(this.$refs.dropzone, {
+      url: 'fdg',
+      method: 'post',
+      autoProcessQueue: false,
+    });
+  },
+  methods:{
+    store(){
+      this.dropzone.getAcceptedFiles()
+    }
+  }
+}
+</script>
 <script setup>
 import { BUTTON_TYPE_WARNING, BUTTON_TYPE_SUCCESS } from "@/constants";
 import { ICON_PLUS, ICON_XMARK } from "@/icons";
 import BaseButton from "@/Components/BaseButton.vue";
 import InputError from "@/Components/InputError.vue";
 import BaseIcon from "@/Components/BaseIcon.vue";
-import Dropzone from "@/Components/Dropzone.vue";
+// import Dropzone from "@/Components/Dropzone.vue";
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
 // import TinyEditor from "@/Components/TinyEditor.vue";
 import Editor from '@tinymce/tinymce-vue'
 
 defineProps({
-  categories:{
-    required:true,
-    type:Object
+  categories: {
+    required: true,
+    type: Object
   },
-  tags:{
-    required:true,
-    type:Object
+  tags: {
+    required: true,
+    type: Object
   }
 })
 
@@ -90,7 +112,14 @@ const form = useForm({
                     </div>
                     <div class="col-span-full">
                       <div class="mt-2">
-                        <Dropzone />
+                        <!-- <Dropzone /> -->
+                        <div class="mb-2 pt-2 inline-block text-sm text-gray-800 sm:text-base">Загрузите изображение</div>
+                        <div class="pt-2 m-auto w-1/3">
+                          <div ref="dropzone"
+                            class=" rounded-md cursor-pointer p-5 bg-violet-500 hover:bg-violet-800 text-center text-slate-200 ">
+                            drop
+                          </div>
+                        </div>
                       </div>
                     </div>
 
